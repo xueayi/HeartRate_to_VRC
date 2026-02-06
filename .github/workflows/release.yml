@@ -36,13 +36,14 @@ jobs:
         copy README.md release\
         
     - name: 创建 Release 说明
+      shell: bash
       run: |
         echo "# VRC心率OSC工具 ${{ github.ref_name }}" > release_notes.md
         echo "" >> release_notes.md
         echo "## 下载说明" >> release_notes.md
         echo "" >> release_notes.md
-        echo "1. 下载 `VRC_HR_Tool.exe`" >> release_notes.md
-        echo "2. 首次运行会自动生成 `config.ini` 配置文件" >> release_notes.md
+        echo "1. 下载 \`VRC_HR_Tool.exe\`" >> release_notes.md
+        echo "2. 首次运行会自动生成 \`config.ini\` 配置文件" >> release_notes.md
         echo "3. 根据需要修改配置文件中的参数" >> release_notes.md
         echo "" >> release_notes.md
         echo "## 使用方法" >> release_notes.md
