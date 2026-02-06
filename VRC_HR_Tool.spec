@@ -1,4 +1,5 @@
 # -*- mode: python ; coding: utf-8 -*-
+import os
 
 """
 PyInstaller 配置文件 - VRC心率OSC工具
@@ -6,6 +7,10 @@ PyInstaller 配置文件 - VRC心率OSC工具
 """
 
 block_cipher = None
+
+# 从环境变量获取版本号，如果不存在则留空
+app_version = os.environ.get('APP_VERSION', '')
+exe_name = f'HeartRate_to_VRC_{app_version}' if app_version else 'HeartRate_to_VRC'
 
 a = Analysis(
     ['VRC_HR_Tool_SinkStar101_pyqt_single.py'],
@@ -49,14 +54,14 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='VRC_HR_Tool',
+    name=exe_name,
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
     upx_exclude=[],
     runtime_tmpdir=None,
-    console=True,  # 显示控制台窗口以便查看日志
+    console=False,  # 显示控制台窗口以便查看日志
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,

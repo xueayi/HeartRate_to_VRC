@@ -65,15 +65,15 @@ pip install -r requirements.txt
 - **普通模式**：仅发送 OSC
 - **OBS 模式**：同时输出 `rate.txt` 文件
 
-## 界面预览
-
-<img width="578" height="452" alt="配置界面" src="https://github.com/user-attachments/assets/6251d020-1854-4e45-a7a3-893f925e4a69" />
-
-<img width="502" height="632" alt="监控界面" src="https://github.com/user-attachments/assets/31ed0798-bad3-434a-880e-65a3e6540f0e" />
-
 ## MA插件
 
 下载链接：https://github.com/SinkStarUR/PCBLEtoVRC/releases/download/1.0.1/Heart_Rate_MA.unitypackage
+
+## 界面预览
+
+<img alt="配置界面" src="./img/config.png" />
+
+<img alt="监控界面" src="./img/monitor.png" />
 
 ## 开发者说明
 

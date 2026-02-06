@@ -25,26 +25,31 @@ jobs:
         pip install pyinstaller
         
     - name: 使用 PyInstaller 打包
+      env:
+        APP_VERSION: ${{ github.ref_name }}
       run: |
         pyinstaller VRC_HR_Tool.spec
         
     - name: 准备发布文件
       run: |
         mkdir release
-        copy dist\VRC_HR_Tool.exe release\
-        copy config.ini release\config.ini.example
-        copy README.md release\
+        copy config.ini release\
+        move dist\HeartRate_to_VRC_${{ github.ref_name }}.exe release\
+        Compress-Archive -Path release\* -DestinationPath HeartRate_to_VRC_${{ github.ref_name }}.zip
+        
+    - name: 下载 MA 插件
+      run: |
+        curl -L -o release/Heart_Rate_MA.unitypackage https://github.com/SinkStarUR/PCBLEtoVRC/releases/download/1.0.1/Heart_Rate_MA.unitypackage
         
     - name: 创建 Release 说明
       shell: bash
       run: |
         echo "# VRC心率OSC工具 ${{ github.ref_name }}" > release_notes.md
         echo "" >> release_notes.md
-        echo "## 下载说明" >> release_notes.md
+        echo "## 附件说明" >> release_notes.md
         echo "" >> release_notes.md
-        echo "1. 下载 \`VRC_HR_Tool.exe\`" >> release_notes.md
-        echo "2. 首次运行会自动生成 \`config.ini\` 配置文件" >> release_notes.md
-        echo "3. 根据需要修改配置文件中的参数" >> release_notes.md
+        echo "1. \`HeartRate_to_VRC_${{ github.ref_name }}.exe\`: 主程序，可直接运行。首次运行会自动生成 \`config.ini\`。" >> release_notes.md
+        echo "2. \`Heart_Rate_MA.unitypackage\`: 用于 VRChat Avatar 的 MA 插件包。" >> release_notes.md
         echo "" >> release_notes.md
         echo "## 使用方法" >> release_notes.md
         echo "" >> release_notes.md
@@ -54,9 +59,8 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          release/VRC_HR_Tool.exe
-          release/config.ini.example
-          release/README.md
+          HeartRate_to_VRC_${{ github.ref_name }}.zip
+          release/Heart_Rate_MA.unitypackage
         body_path: release_notes.md
         draft: false
         prerelease: false
