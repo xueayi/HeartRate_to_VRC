@@ -9,11 +9,25 @@ VRC心率OSC工具 - 支持 BLE 蓝牙和 Pulsoid 双数据源
 - **OSC 输出**：实时发送心率数据到 VRChat
 - **OBS 模式**：输出心率到 `rate.txt` 文件，便于 OBS 调用
 
-## 安装依赖
+## 安装依赖（本地开发）
 
 ```bash
 pip install -r requirements.txt
 ```
+
+## 下载使用
+
+### 预编译版本（推荐）
+
+直接下载最新版本的可执行文件，无需安装 Python 环境：
+
+[前往 Releases 下载](https://github.com/xueayi/HeartRate_to_VRC/releases/latest)
+
+下载 `VRC_HR_Tool.exe` 后双击运行即可，首次运行会自动生成 `config.ini` 配置文件。
+
+### 从源码运行
+
+如果你想从源码运行或进行开发，请参考下面的安装依赖和快速开始步骤。
 
 ## 快速开始
 
@@ -57,3 +71,34 @@ pip install -r requirements.txt
 <img width="578" height="452" alt="配置界面" src="https://github.com/user-attachments/assets/6251d020-1854-4e45-a7a3-893f925e4a69" />
 
 <img width="502" height="632" alt="监控界面" src="https://github.com/user-attachments/assets/31ed0798-bad3-434a-880e-65a3e6540f0e" />
+
+## MA插件
+
+下载链接：https://github.com/SinkStarUR/PCBLEtoVRC/releases/download/1.0.1/Heart_Rate_MA.unitypackage
+
+## 开发者说明
+
+### 本地打包
+
+如果你想自己打包可执行文件：
+
+```bash
+# 安装 PyInstaller
+pip install pyinstaller
+
+# 使用配置文件打包
+pyinstaller VRC_HR_Tool.spec
+
+# 打包后的文件在 dist/VRC_HR_Tool.exe
+```
+
+### 发布新版本
+
+推送带有版本号的 tag 即可自动触发 GitHub Actions 构建和发布：
+
+```bash
+git tag v1.0.3
+git push origin v1.0.3
+```
+
+GitHub Actions 会自动构建 exe 文件并创建 Release。
