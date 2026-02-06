@@ -9,13 +9,7 @@ VRC心率OSC工具 - 支持 BLE 蓝牙和 Pulsoid 双数据源
 - **OSC 输出**：实时发送心率数据到 VRChat
 - **OBS 模式**：输出心率到 `rate.txt` 文件，便于 OBS 调用
 
-## 安装依赖（本地开发）
-
-```bash
-pip install -r requirements.txt
-```
-
-## 下载使用
+## 快速开始
 
 ### 预编译版本（推荐）
 
@@ -25,11 +19,16 @@ pip install -r requirements.txt
 
 下载 `VRC_HR_Tool.exe` 后双击运行即可，首次运行会自动生成 `config.ini` 配置文件。
 
-### 从源码运行
+## 从源码运行
 
 如果你想从源码运行或进行开发，请参考下面的安装依赖和快速开始步骤。
 
-## 快速开始
+
+### 安装依赖
+
+```bash
+pip install -r requirements.txt
+```
 
 ### 方式一：BLE 蓝牙模式
 
