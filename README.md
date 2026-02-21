@@ -13,6 +13,8 @@ VRC心率OSC工具 - 支持 BLE 蓝牙和 Pulsoid 双数据源
 
 ### 预编译版本（推荐）
 
+使用说明视频地址：https://www.bilibili.com/video/BV1DpbwzjEAC/
+
 直接下载最新版本的可执行文件，无需安装 Python 环境：
 
 [前往 Releases 下载](https://github.com/xueayi/HeartRate_to_VRC/releases/latest)
